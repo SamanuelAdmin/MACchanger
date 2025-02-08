@@ -28,8 +28,8 @@ def all():
     result = {}
 
     for ifaceName, ifaceInfo in psutil.net_if_addrs().items():
-        ifaceMac = ifaceInfo[0].address.replace('-', ':')
-        ifaceIp = ifaceInfo[1].address
+        ifaceMac = ifaceInfo[1].address.replace('-', ':')
+        ifaceIp = ifaceInfo[0].address
 
         # if not isValidMac(ifaceMac): continue
 
