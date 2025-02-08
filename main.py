@@ -69,7 +69,7 @@ def main(*args):
         if choosenInterface.mac == randomMac:
             print('Correct.')
         else:
-            print(f'Incorrect. Mac: {choosenInterface.mac}')
+            print(f'Incorrect. {choosenInterface}')
 
 
         time.sleep(delay)
