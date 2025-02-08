@@ -31,7 +31,7 @@ def all():
         ifaceMac = ifaceInfo[0].address.replace('-', ':')
         ifaceIp = ifaceInfo[1].address
 
-        if not isValidMac(ifaceMac): continue
+        # if not isValidMac(ifaceMac): continue
 
         result[ifaceName] = Interface(ifaceName, ifaceMac, ifaceIp)
 
