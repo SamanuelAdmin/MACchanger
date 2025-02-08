@@ -19,7 +19,7 @@ class Interface:
 
 def isValidMac(mac: str) -> bool:
     mac = mac.replace('-', ':').lower()
-    return re.match("[0-9a-f]{2}([-:]?)[0-9a-f]{2}(\\1[0-9a-f]{2}){4}$", mac)
+    return re.match(r"^([0-9A-Fa-f]{2}([-:])?){5}[0-9A-Fa-f]{2}$", mac)
 
 
 
