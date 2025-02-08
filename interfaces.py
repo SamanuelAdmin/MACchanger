@@ -39,7 +39,7 @@ def all():
 
 def getRandomMac() -> str: return fake.mac_address()
 
-def setInterfaceMac(self, iface, mac, port=None): # from https://github.com/feross/SpoofMAC/blob/master/spoofmac/interface.py#L110
+def setInterfaceMac(iface, mac): # from https://github.com/feross/SpoofMAC/blob/master/spoofmac/interface.py#L110
     subprocess.call(f"ip link set {iface} down".split())
     subprocess.call(f"ip link set {iface} address {mac}".split())
     subprocess.call(f"ip link set {iface} up".split())
