@@ -28,10 +28,10 @@ def all():
     result = {}
 
     for ifaceName, ifaceInfo in psutil.net_if_addrs().items():
-        ifaceMac = ifaceInfo[2].address.replace('-', ':')
-        ifaceIp = ifaceInfo[0].address
+        ifaceMac = next((addr.address for addr in ifaceInfo if addr.family == psutil.AF_LINK), None)
+        ifaceIp = next((addr.address for addr in ifaceInfo if addr.family == psutil.AF_INET), None)
 
-        # if not isValidMac(ifaceMac): continue
+        if not isValidMac(ifaceMac): continue
 
         result[ifaceName] = Interface(ifaceName, ifaceMac, ifaceIp)
 
@@ -40,7 +40,7 @@ def all():
 def getRandomMac() -> str: return fake.mac_address()
 
 def setInterfaceMac(iface, mac): # from https://github.com/feross/SpoofMAC/blob/master/spoofmac/interface.py#L110
-    print(iface, ' -> ', mac)
+    print('"' + iface, '" -> ', mac)
     subprocess.call(f"ip link set {iface} down".split())
     subprocess.call(f"ip link set {iface} address {mac}".split())
     subprocess.call(f"ip link set {iface} up".split())
