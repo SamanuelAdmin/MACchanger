@@ -30,8 +30,8 @@ def show():
 
 def main(*args):
     delay = getValueFromArgs(*args, 'd') # time in seconds
-    if not delay or delay == "": delay = 10
-    delay = int(delay)
+    if delay: delay = int(delay)
+
 
     if getValueFromArgs(*args, 'show') is not None: show()
 
@@ -72,8 +72,8 @@ def main(*args):
             print(f'Incorrect. {choosenInterface}')
 
 
-        time.sleep(delay)
-
+        if delay: time.sleep(delay)
+        else: input('Press Enter to change MAC...')
 
 
 
