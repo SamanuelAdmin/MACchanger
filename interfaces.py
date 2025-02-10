@@ -2,6 +2,7 @@ import subprocess
 import psutil
 import re
 from faker import Faker
+import socket
 
 
 fake = Faker()
@@ -29,7 +30,7 @@ def all():
 
     for ifaceName, ifaceInfo in psutil.net_if_addrs().items():
         ifaceMac = next((addr.address for addr in ifaceInfo if addr.family == psutil.AF_LINK), None)
-        ifaceIp = next((addr.address for addr in ifaceInfo if addr.family == psutil.AF_INET), None)
+        ifaceIp = next((addr.address for addr in ifaceInfo if addr.family == socket.AF_INET), None)
 
         if not isValidMac(ifaceMac): continue
 
